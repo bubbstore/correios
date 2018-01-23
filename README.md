@@ -2,7 +2,7 @@
 
 Biblioteca que faz cálculo de frete, rastreamento de objetos e consulta de CEP diretamente do Webservice dos Correios.
 
-[![StyleCI](https://styleci.io/repos/118332986/shield?branch=master)](https://styleci.io/repos/118332986)
+[![StyleCI](https://styleci.io/repos/118616249/shield?branch=master)](https://styleci.io/repos/118616249)
 
 ## Instalação via composer
 
@@ -24,7 +24,7 @@ echo '<pre>' . json_encode($zipcode->find()) . '</pre>';
 
 Resultado esperado:
 
-```json
+```
 [
     'zipcode' => '14940000',
     'street' => [],
@@ -70,7 +70,7 @@ try
 
 Resultado esperado:
 
-```json
+```
 [
     [
         'name' => 'Sedex',
