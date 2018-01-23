@@ -1,0 +1,40 @@
+{
+	"name": "bubbstore/correios",
+	"type": "library",
+	"description": "Biblioteca que faz cálculo de frete, rastreamento de objetos e consulta de CEP diretamente do Webservice dos Correios.",
+	"keywords": [
+		"correios"
+	],
+	"require": {
+		"php": ">=7.0",
+		"guzzlehttp/guzzle": "~6.0",
+        "fabpot/goutte": "^3.2",
+        "nesbot/carbon": "^1.22",
+		"flyingluscas/correios-php": "^2.0@dev"
+	},
+	"require-dev": {
+        "codeclimate/php-test-reporter": "~0.3",
+        "mockery/mockery": "~0.9",
+        "phpunit/phpunit": "~5.0",
+        "squizlabs/php_codesniffer": "~2.3",
+        "larapack/dd": "^1.1"
+    },
+    "scripts": {
+        "test": "phpunit --colors=always",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src"
+    },
+	"autoload": {
+		"psr-0": {
+			"bubbstore": "src/"
+		}
+	},
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Lucas Colette",
+			"email": "lucas@bubb.com.b"
+		}
+	],
+	"minimum-stability": "dev"
+}
