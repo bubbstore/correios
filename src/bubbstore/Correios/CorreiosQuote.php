@@ -8,7 +8,6 @@ use bubbstore\Correios\Exceptions\CorreiosQuoteException;
 
 class CorreiosQuote
 {
-
     protected $origin;
 
     protected $destination;
@@ -154,7 +153,6 @@ class CorreiosQuote
 
     public function calculate()
     {
-
         try {
             $correios = new Client;
 
