@@ -9,7 +9,6 @@ use Carbon\Carbon;
 
 class CorreiosTracking
 {
-
     private $trackingCode;
 
     const TRACKING_URL = 'http://www.linkcorreios.com.br';
@@ -31,7 +30,6 @@ class CorreiosTracking
 
     public function find()
     {
-
         try {
             $client = new Client;
 
@@ -39,11 +37,9 @@ class CorreiosTracking
             $arr = [];
 
             $crawler->filter('div#conteudo')->each(function ($node) use (&$arr) {
-              
                 $lastDate = null;
 
                 $node->filter('table > tbody > tr')->each(function ($n, $key) use (&$arr, &$lastDate) {
-
                     $date = $n->filter('td[rowspan="2"]');
                     $locale = null;
 
@@ -71,7 +67,6 @@ class CorreiosTracking
             $tracking = array_values($arr);
 
             $trackingObject = array_map(function ($key) {
-
                 return [
                     'timestamp' => Carbon::createFromFormat('d/m/Y H:i', $key['date'])->timestamp,
                     'date' => Carbon::createFromFormat('d/m/Y H:i', $key['date'])->format('Y-m-d H:i'),

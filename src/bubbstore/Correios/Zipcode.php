@@ -7,7 +7,6 @@ use FlyingLuscas\Correios\Service;
 
 class Zipcode
 {
-
     protected $zipcode;
 
     public function __construct($zipcode)
