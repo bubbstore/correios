@@ -51,12 +51,18 @@ class CorreiosTracking
 
                         $arr[$date] = [
                             'date' => $date,
-                            'status' => $status
+                            'status' => $status,
                         ];
                     } else {
                         $date = null;
                         $status = null;
-                        $locale = $n->filter('td[colspan="2"]')->count() > 0 ? $n->filter('td[colspan="2"]')->text() : null;
+
+                        if ($n->filter('td[colspan="2"]')->count() > 0) {
+                            $locale = $n->filter('td[colspan="2"]')->text();
+                        } else {
+                            $locale = $n->filter('td')->eq(1)->text();
+                        }
+
                         $locale = str_replace('Local: ', '', $locale);
 
                         $arr[$lastDate]['locale'] = $locale;
@@ -70,7 +76,7 @@ class CorreiosTracking
                 return [
                     'timestamp' => Carbon::createFromFormat('d/m/Y H:i', $key['date'])->timestamp,
                     'date' => Carbon::createFromFormat('d/m/Y H:i', $key['date'])->format('Y-m-d H:i'),
-                    'locale' => $key['locale'],
+                    'locale' => rtrim($key['locale']),
                     'status' => $key['status'],
                     'forwarded' => isset($key['encaminhado']) ? $key['encaminhado'] : null,
                     'delivered' => $key['status'] == 'Entrega Efetuada' || $key['status'] == 'Objeto entregue ao destinatário'
