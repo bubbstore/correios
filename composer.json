@@ -6,7 +6,7 @@
 		"correios"
 	],
 	"require": {
-		"php": ">=7.0",
+		"php": "~5.6|~7.0",
 		"guzzlehttp/guzzle": "~6.0",
         "fabpot/goutte": "^3.2",
         "nesbot/carbon": "^1.22",
