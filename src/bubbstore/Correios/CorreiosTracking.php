@@ -83,8 +83,14 @@ class CorreiosTracking
                 ];
             }, $tracking);
 
-            if (!isset($trackingObject[0])) {
-                throw new CorreiosTrackingException('Tracking code not found');
+            $i = 0;
+            
+            while (!isset($trackingObject[0])) {
+                return $this->find();
+                $i++;
+                if ( $i == 10 ) {
+                    throw new CorreiosTrackingException('Tracking code not found');
+                }
             }
 
             $firstTrackingObject = $trackingObject[0];
