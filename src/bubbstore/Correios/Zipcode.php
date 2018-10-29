@@ -6,7 +6,6 @@ use FlyingLuscas\Correios\Client;
 use FlyingLuscas\Correios\Service;
 use bubbstore\Correios\Exceptions\ZipcodeException;
 
-
 class Zipcode
 {
     protected $zipcode;
