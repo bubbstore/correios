@@ -10,7 +10,8 @@
 		"guzzlehttp/guzzle": "~6.0",
         "fabpot/goutte": "^3.2",
         "nesbot/carbon": "^1.22",
-		"flyingluscas/correios-php": "^2.0@dev"
+		"flyingluscas/correios-php": "^2.0@dev",
+		"larapack/dd": "^1.1"
 	},
 	"require-dev": {
         "codeclimate/php-test-reporter": "~0.3",

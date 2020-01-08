@@ -36,38 +36,20 @@ class CorreiosTracking
             $crawler = $client->request('GET', self::TRACKING_URL.'/'.$this->getTrackingCode());
             $arr = [];
 
-            $crawler->filter('div#conteudo')->each(function ($node) use (&$arr) {
+            $crawler->filter('ul.linha_status')->each(function ($node) use (&$arr) {
                 $lastDate = null;
 
-                $node->filter('table > tbody > tr')->each(function ($n, $key) use (&$arr, &$lastDate) {
-                    $date = $n->filter('td[rowspan="2"]');
-                    $locale = null;
+                $date = $node->filter('li')->eq(1)->text();
+                $date = str_replace(['Data  : ', ' | ', 'Hora:'], '', $date);
+                $status = str_replace('Status: ', '', $node->filter('li')->eq(0)->text());
+                $locale = str_replace(['Local: ', 'Origem: '], '', $node->filter('li')->eq(2)->text());
 
-                    if ($date->count() > 0) {
-                        $date = $date->text();
-                        $status = strip_tags($n->filter('td[colspan="2"]')->text());
-
-                        $lastDate = $date;
-
-                        $arr[$date] = [
-                            'date' => $date,
-                            'status' => $status,
-                        ];
-                    } else {
-                        $date = null;
-                        $status = null;
-
-                        if ($n->filter('td[colspan="2"]')->count() > 0) {
-                            $locale = $n->filter('td[colspan="2"]')->text();
-                        } else {
-                            $locale = $n->filter('td')->eq(1)->text();
-                        }
-
-                        $locale = str_replace('Local: ', '', $locale);
-
-                        $arr[$lastDate]['locale'] = $locale;
-                    }
-                });
+                $arr[$date] = [
+                    'date' => $date,
+                    'status' => $status,
+                    'locale' => $locale,
+                ];
+             
             });
 
             $tracking = array_values($arr);
