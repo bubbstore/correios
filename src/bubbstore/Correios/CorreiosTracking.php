@@ -49,7 +49,6 @@ class CorreiosTracking
                     'status' => $status,
                     'locale' => $locale,
                 ];
-             
             });
 
             $tracking = array_values($arr);
