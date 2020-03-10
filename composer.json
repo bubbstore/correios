@@ -9,7 +9,7 @@
 		"php": "~5.6|~7.0",
 		"guzzlehttp/guzzle": "~6.0",
         "fabpot/goutte": "^3.2",
-        "nesbot/carbon": "^1.22",
+        "nesbot/carbon": "^2",
 		"flyingluscas/correios-php": "^2.0@dev",
 		"larapack/dd": "^1.1"
 	},
