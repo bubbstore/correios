@@ -40,7 +40,7 @@ class CorreiosTracking
                 $lastDate = null;
 
                 $date = $node->filter('li')->eq(1)->text();
-                $date = str_replace(['Data  : ', ' | ', 'Hora:'], '', $date);
+                $date = str_replace(['Data  : ', 'Data : ', ' | ', 'Hora:'], '', $date);
                 $status = str_replace('Status: ', '', $node->filter('li')->eq(0)->text());
                 $locale = str_replace(['Local: ', 'Origem: '], '', $node->filter('li')->eq(2)->text());
 
